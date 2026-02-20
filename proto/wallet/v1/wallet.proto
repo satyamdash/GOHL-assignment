@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package wallet.v1;
+
+option go_package = "connect-demo/backend/gen/wallet/v1;walletv1";
+
+service WalletService {
+  rpc GetBalance(GetBalanceRequest) returns (GetBalanceResponse);
+  rpc Deposit(DepositRequest) returns (DepositResponse);
+  rpc MakePayment(MakePaymentRequest) returns (MakePaymentResponse);
+  rpc GetTransactionHistory(GetTransactionHistoryRequest) returns (GetTransactionHistoryResponse);
+}
+
+message GetBalanceRequest {
+  string user_id = 1;
+}
+
+message GetBalanceResponse {
+  string user_id = 1;
+  double balance = 2;
+  string currency = 3;
+  int64 last_updated = 4;
+}
+
+message DepositRequest {
+  string user_id = 1;
+  double amount = 2;
+  string description = 3;
+}
+
+message DepositResponse {
+  string transaction_id = 1;
+  double new_balance = 2;
+  int64 timestamp = 3;
+  bool success = 4;
+}
+
+message MakePaymentRequest {
+  string from_user_id = 1;
+  string to_user_id = 2;
+  double amount = 3;
+  string description = 4;
+}
+
+message MakePaymentResponse {
+  string transaction_id = 1;
+  double remaining_balance = 2;
+  int64 timestamp = 3;
+  bool success = 4;
+}
+
+message Transaction {
+  string id = 1;
+  string user_id = 2;
+  string type = 3; // "deposit", "payment"
+  double amount = 4;
+  string description = 5;
+  double balance_after = 6;
+  int64 created_at = 7;
+  string status = 8; // "completed", "pending"
+  string from_user_id = 9;
+  string to_user_id = 10;
+}
+
+message GetTransactionHistoryRequest {
+  string user_id = 1;
+  int32 limit = 2;
+  int32 offset = 3;
+}
+
+message GetTransactionHistoryResponse {
+  repeated Transaction transactions = 1;
+  int32 total = 2;
+}
