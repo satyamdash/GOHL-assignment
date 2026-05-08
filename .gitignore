@@ -1,0 +1,81 @@
+# Go-specific
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+*.dll
+*.test
+*.out
+/bin/
+/dist/
+/build/
+
+# Vendor directory (if you prefer not to commit)
+# vendor/
+
+# Go modules (usually committed, but optional)
+# go.sum
+
+# IDE and Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-workspace
+*.sublime-project
+
+# Environment variables (NEVER commit sensitive data)
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+logs/
+*.out
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# OS-specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Node/Frontend (if applicable)
+node_modules/
+.pnpm-store/
+frontend/dist/
+frontend/.nuxt/
+
+# Kubernetes local files
+kubeconfig
+.kubeconfig
+
+# Build artifacts from Docker
+*.tar
+*.gz
+
+# IDE cache
+.cache/
+.eslintcache
+
+# macOS specific
+.AppleDouble
+.LSOverride
+
+# Secrets and credentials
+*.pem
+*.key
+*.crt
+*.p12
+secrets/
